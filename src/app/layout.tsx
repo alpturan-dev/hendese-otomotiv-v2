@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -20,10 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${oswald.className} antialiased`}
+        className={`${oswald.className} antialiased min-h-screen flex flex-col justify-between`}
       >
         <Header />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
