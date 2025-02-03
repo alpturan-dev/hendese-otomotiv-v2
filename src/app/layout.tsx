@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${oswald.className} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
