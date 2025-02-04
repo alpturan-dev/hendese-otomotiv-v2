@@ -11,6 +11,7 @@ import {
 import Logo from '../../public/logo.png';
 import { Input } from './ui/input';
 import Line from './line';
+import { menus } from '@/constants/constants';
 
 const Header = () => {
     return (
@@ -36,6 +37,9 @@ const Header = () => {
                                     Tüm Parçalar
                                 </MenubarItem>
                                 <MenubarSeparator />
+                                {menus.map((menu, index) => (
+                                    <MenubarItem key={index}>{menu.label}</MenubarItem>
+                                ))}
                                 <MenubarItem>Motor Mekanik</MenubarItem>
                                 <MenubarItem>Motor Elektronik</MenubarItem>
                                 <MenubarItem>Şanzıman-Diferansiyel</MenubarItem>
