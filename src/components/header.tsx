@@ -12,6 +12,7 @@ import Logo from '../../public/logo.png';
 import { Input } from './ui/input';
 import Line from './line';
 import { menus } from '@/constants/constants';
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -27,7 +28,9 @@ const Header = () => {
                 </div>
             </div>
             <div className='flex flex-col md:flex-row items-center justify-center py-5 gap-4 md:gap-20 md:container md:mx-auto'>
-                <Image src={Logo} alt='Logo' width={160} height={95} priority />
+                <Link href="/">
+                    <Image src={Logo} alt='Logo' width={160} height={95} priority />
+                </Link>
                 <div className='w-full md:w-auto px-6 flex items-center gap-4'>
                     <Menubar className='block md:hidden'>
                         <MenubarMenu>
@@ -83,6 +86,42 @@ const Header = () => {
                             <Line width={160} />
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="hidden md:flex bg-primary h-11 py-0 justify-center items-center">
+                <div className="flex justify-center gap-7 items-center">
+                    <div>
+                        <Menubar className="border-none rounded-none h-4">
+                            <MenubarMenu>
+                                <MenubarTrigger className="cursor-pointer rounded-none px-0 py-0 text-base font-normal">
+                                    <div className="flex gap-1 items-center bg-primary text-white">
+                                        <Menu />
+                                        <span>TÜMÜ</span>
+                                    </div>
+                                </MenubarTrigger>
+                                <MenubarContent>
+                                    <MenubarItem>
+                                        Tüm Parçalar
+                                    </MenubarItem>
+                                    <MenubarSeparator />
+                                    {menus.map((menu, index) => (
+                                        <MenubarItem key={index}>{menu.label}</MenubarItem>
+                                    ))}
+                                </MenubarContent>
+                            </MenubarMenu>
+                        </Menubar>
+                    </div>
+                    <ul className="flex justify-center items-center gap-6 text-white">
+                        {menus.map((menu, index) => {
+                            if (index < 7) {
+                                return (
+                                    <li key={index} className="cursor-pointer hover:opacity-70">
+                                        {menu.label}
+                                    </li>)
+                            }
+                        }
+                        )}
+                    </ul>
                 </div>
             </div>
         </header>
