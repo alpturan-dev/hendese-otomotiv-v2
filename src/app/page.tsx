@@ -1,15 +1,5 @@
 import Image from "next/image";
 import CarouselImage from '../../public/carousel.jpg';
-import { menus } from "@/constants/constants";
-import { Menu } from 'lucide-react'
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from "@/components/ui/menubar"
 import AllProducts from "@/components/home/all-products";
 
 export default function Home() {
