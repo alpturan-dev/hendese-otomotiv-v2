@@ -34,7 +34,7 @@ const Footer = () => {
                     </div>
                     <div className='pl-2 flex flex-col gap-1 items-start font-light'>
                         <span><b>Pazartesi - Cuma:</b> 09:00 - 19:00</span>
-                        <span><b>Cumartesi:</b> 10:00 - 17:00 </span>
+                        <span><b>Cumartesi:</b> 09:00 - 16:00 </span>
                         <span><b>Pazar:</b> Kapalı  </span>
                     </div>
                 </div>
