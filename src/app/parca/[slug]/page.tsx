@@ -34,8 +34,8 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
             images: [
                 {
                     url: product.images[0],
-                    width: 800,
-                    height: 600,
+                    width: 300,
+                    height: 300,
                 }
             ]
         }
