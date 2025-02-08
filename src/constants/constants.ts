@@ -1,36 +1,46 @@
 export const menus = [
     {
-        label: "Motor Mekanik"
+        label: "Motor Mekanik",
+        href: "/motor-mekanik"
     },
     {
-        label: "Motor Elektronik"
+        label: "Motor Elektronik",
+        href: "/motor-elektronik"
     },
     {
-        label: "Şanzıman-Diferansiyel"
+        label: "Şanzıman-Diferansiyel",
+        href: "/sanziman-diferansiyel"
     },
     {
-        label: "Diferansiyel Kilitleri"
+        label: "Diferansiyel Kilitleri",
+        href: "/diferansiyel-kilitleri"
     },
     {
-        label: "Sensör Valf ve Elektronik"
+        label: "Sensör Valf ve Elektronik",
+        href: "/sensor-valf-ve-elektronik"
     },
     {
-        label: "Aydınlatma"
+        label: "Aydınlatma",
+        href: "/aydinlatma"
     },
     {
-        label: "Kaporta"
+        label: "Kaporta",
+        href: "/kaporta"
     },
     {
-        label: "İç Trim"
+        label: "İç Trim",
+        href: "/ic-trim"
     },
     {
-        label: "Periyodik Bakım"
+        label: "Periyodik Bakım",
+        href: "/periyodik-bakim"
     },
     {
-        label: "Lastik Jant"
+        label: "Lastik Jant",
+        href: "/lastik-jant"
     },
     {
-        label: "Aksesuar"
+        label: "Aksesuar",
+        href: "/aksesuar"
     },
-
-]
+];

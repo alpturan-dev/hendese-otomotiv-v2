@@ -41,14 +41,12 @@ const Header = () => {
                                 </MenubarItem>
                                 <MenubarSeparator />
                                 {menus.map((menu, index) => (
-                                    <MenubarItem key={index}>{menu.label}</MenubarItem>
+                                    <Link key={index} href={`/kategori/${menu.href}`}>
+                                        <MenubarItem >
+                                            {menu.label}
+                                        </MenubarItem>
+                                    </Link>
                                 ))}
-                                <MenubarItem>Motor Mekanik</MenubarItem>
-                                <MenubarItem>Motor Elektronik</MenubarItem>
-                                <MenubarItem>Şanzıman-Diferansiyel</MenubarItem>
-                                <MenubarItem>Diferansiyel Kilitleri</MenubarItem>
-                                <MenubarItem>Sensör Valf ve Elektronik</MenubarItem>
-                                <MenubarItem>Aydınlatma</MenubarItem>
                             </MenubarContent>
                         </MenubarMenu>
                     </Menubar>
@@ -105,7 +103,11 @@ const Header = () => {
                                     </MenubarItem>
                                     <MenubarSeparator />
                                     {menus.map((menu, index) => (
-                                        <MenubarItem key={index}>{menu.label}</MenubarItem>
+                                        <Link key={index} href={`/kategori/${menu.href}`}>
+                                            <MenubarItem >
+                                                {menu.label}
+                                            </MenubarItem>
+                                        </Link>
                                     ))}
                                 </MenubarContent>
                             </MenubarMenu>
@@ -115,9 +117,12 @@ const Header = () => {
                         {menus.map((menu, index) => {
                             if (index < 7) {
                                 return (
-                                    <li key={index} className="cursor-pointer hover:opacity-70">
-                                        {menu.label}
-                                    </li>)
+                                    <Link key={index} href={`/kategori/${menu.href}`}>
+                                        <li className="cursor-pointer hover:opacity-70">
+                                            {menu.label}
+                                        </li>
+                                    </Link>
+                                )
                             }
                         }
                         )}

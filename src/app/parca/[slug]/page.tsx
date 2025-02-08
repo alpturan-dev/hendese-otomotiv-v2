@@ -46,7 +46,6 @@ export default async function Page({ params }: Props) {
     const slug = (await params).slug;
     const data = await fetch(process.env.API_URL + '/api/products/' + slug);
     const product = await data.json();
-    console.log(product)
     return (
         <div className='max-w-4xl mx-auto px-5 md:px-0'>
             <hr className='block md:hidden' />

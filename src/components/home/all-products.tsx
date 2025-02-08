@@ -3,20 +3,7 @@ import Line from '../line'
 import Image from 'next/image'
 import { twJoin } from 'tailwind-merge';
 import Link from 'next/link';
-
-interface Product {
-    _id: string,
-    name: string;
-    description: string;
-    stock: number;
-    oem: string;
-    price: string;
-    models: Array<string>;
-    part: string;
-    isActive: boolean;
-    categories: Array<string>;
-    images: Array<string>;
-}
+import { Product } from '@/types/types';
 
 export default async function AllProducts() {
     const data = await fetch(process.env.API_URL + '/api/products');
