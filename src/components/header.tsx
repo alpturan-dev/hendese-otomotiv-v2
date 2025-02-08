@@ -9,10 +9,10 @@ import {
     MenubarTrigger,
 } from "@/components/ui/menubar"
 import Logo from '../../public/logo.png';
-import { Input } from './ui/input';
 import Line from './line';
 import { menus } from '@/constants/constants';
 import Link from 'next/link';
+import Search from './search';
 
 const Header = () => {
     return (
@@ -52,25 +52,7 @@ const Header = () => {
                             </MenubarContent>
                         </MenubarMenu>
                     </Menubar>
-                    <div className='w-full md:w-[400px]'>
-                        <div className='relative h-10 flex items-center gap-2'>
-                            <Input type="text" placeholder="Suzuki Yedek Çıkma Parça ara..." className="text-xs pr-12 pl-4" />
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="absolute top-0 bottom-0 w-6 h-6 my-auto right-3 text-primary"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
-                        </div>
-                    </div>
+                    <Search />
                 </div>
                 <div className='hidden md:block'>
                     <div className='relative flex flex-col gap-1 justify-center items-center'>
