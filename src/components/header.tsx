@@ -17,7 +17,7 @@ import Link from 'next/link';
 const Header = () => {
     return (
         <header>
-            <div className='bg-primary/5 border-b-[0.5px] border-primary/50 py-2 flex flex-col md:flex-row md:items-center md:justify-center gap-1 md:gap-6'>
+            <div className='bg-primary/5 border-b-[0.5px] border-primary/50 py-1 flex flex-col md:flex-row md:items-center md:justify-center gap-1 md:gap-6'>
                 <div className='flex items-center justify-center gap-1'>
                     <Map className='text-primary w-5 h-5' />
                     <span className='text-xs'>Arifbey, Adnan Menderes Caddesi No:33A, 54580 Arifiye/SAKARYA</span>

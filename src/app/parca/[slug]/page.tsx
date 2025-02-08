@@ -13,6 +13,7 @@ import { twJoin } from 'tailwind-merge';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { menus } from '@/constants/constants';
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -46,6 +47,7 @@ export default async function Page({ params }: Props) {
     const slug = (await params).slug;
     const data = await fetch(process.env.API_URL + '/api/products/' + slug);
     const product = await data.json();
+    const menu = menus.filter((el) => product.part === el.label)[0];
     return (
         <div className='max-w-4xl mx-auto px-5 md:px-0'>
             <hr className='block md:hidden' />
@@ -56,7 +58,7 @@ export default async function Page({ params }: Props) {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink href={`/kategori/${product.part}`}>{product.part}</BreadcrumbLink>
+                        <BreadcrumbLink href={`/kategori/${menu?.href}`}>{menu?.label}</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
