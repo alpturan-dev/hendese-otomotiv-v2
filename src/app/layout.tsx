@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -25,6 +26,7 @@ export default function RootLayout({
         className={`${oswald.className} antialiased min-h-screen flex flex-col justify-between`}
       >
         <Analytics />
+        <SpeedInsights />
         <Header />
         <div className="flex-grow">
           {children}
