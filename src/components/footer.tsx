@@ -6,6 +6,8 @@ import Line from './line';
 import Image from 'next/image';
 
 const Footer = () => {
+    const date = new Date();
+    const year = date.getFullYear();
     return (
         <footer className='w-full bg-primary/10'>
             <div className='flex flex-col md:flex-row items-center md:items-start justify-center gap-10 px-8 py-8 md:py-8 md:container md:mx-auto'>
@@ -53,7 +55,7 @@ const Footer = () => {
             </div>
             <div className='bg-primary h-11 px-3 py-1 flex items-center justify-center'>
                 <span className='text-base text-white'>
-                    Hendese Otomotiv © 2024 | Made by{" "}
+                    Hendese Otomotiv © {year} | Made by{" "}
                     <a href="https://github.com/alpturan-dev" className='underline'>alpturan-dev</a>
                 </span>
             </div>
