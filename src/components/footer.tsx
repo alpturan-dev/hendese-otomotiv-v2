@@ -2,8 +2,10 @@ import React from 'react'
 import Logo from '../../public/logo.png';
 import Facebook from '../../public/facebook.svg';
 import WhatsApp from '../../public/whatsapp.svg';
+import Sahibinden from '../../public/sahibinden.png';
 import Line from './line';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
     const date = new Date();
@@ -48,8 +50,15 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className='flex flex-row gap-3 items-center'>
-                        <Image src={Facebook} alt='Facebook' width={20} height={20} />
-                        <Image src={WhatsApp} alt='WhatsApp' width={20} height={20} />
+                        <Link href="https://www.facebook.com/hendeseoto/">
+                            <Image src={Facebook} alt='Facebook' width={20} height={20} />
+                        </Link>
+                        <Link href="https://hendeseoto.sahibinden.com/">
+                            <Image src={Sahibinden} alt="Sahibinden" width={20} height={20} />
+                        </Link>
+                        <Link href="https://wa.me/905303604105">
+                            <Image src={WhatsApp} alt='WhatsApp' width={20} height={20} />
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -59,7 +68,7 @@ const Footer = () => {
                     <a href="https://github.com/alpturan-dev" className='underline'>alpturan-dev</a>
                 </span>
             </div>
-        </footer>
+        </footer >
     )
 }
 

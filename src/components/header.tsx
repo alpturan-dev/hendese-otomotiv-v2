@@ -79,9 +79,11 @@ const Header = () => {
                                 WhatsApp İletişim
                             </span>
                         </div>
-                        <span className='text-lg text-primary tracking-wider font-semibold'>
-                            +90 530 360 41 05
-                        </span>
+                        <a href="tel:+90-530-360-4105">
+                            <span className='text-lg text-primary tracking-wider font-semibold'>
+                                +90 530 360 41 05
+                            </span>
+                        </a>
                         <div className='absolute -bottom-1'>
                             <Line width={160} />
                         </div>
