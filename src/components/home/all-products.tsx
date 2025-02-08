@@ -13,16 +13,18 @@ export default async function AllProducts() {
             <div className='flex justify-between'>
                 <div className='relative'>
                     <h4 className='text-xl font-bold'>
-                        Tüm Ürünler
+                        Tüm Parçalar
                     </h4>
                     <div className='absolute -bottom-1'>
-                        <Line width={100} />
+                        <Line width={110} />
                     </div>
                 </div>
                 <div>
                     <span className='text-xs'>
-                        Toplam {products.count} ürün{" "}
-                        <span className='underline text-primary'>devamı...</span>
+                        Toplam {products.count} parça{" "}
+                        <Link href="/tum-parcalar">
+                            <span className='underline text-primary'>devamı...</span>
+                        </Link>
                     </span>
                 </div>
             </div>
@@ -30,7 +32,7 @@ export default async function AllProducts() {
                 {products.data.map((product: Product, index: number) => {
                     if (index < 10) {
                         return (
-                            <div key={index} className='rounded-xl h-80 border shadow-md py-[10px] px-5'>
+                            <div key={index} className='rounded-xl h-80 border shadow-md py-[10px] px-4'>
                                 <div className='h-[120px]'>
                                     <Image src={product.images[0]} alt={product.name} className='h-full' width={120} height={120} />
                                 </div>
@@ -41,7 +43,7 @@ export default async function AllProducts() {
                                         Oem: {product.oem}
                                     </span>
                                 </div>
-                                <div className='h-[60px] flex justify-between items-center'>
+                                <div className='h-[60px] flex justify-between items-center gap-1'>
                                     <span className={twJoin(
                                         'font-semibold',
                                         product.price === "FİYAT SORUNUZ" ? 'text-sm' : 'text-xl'
@@ -50,7 +52,7 @@ export default async function AllProducts() {
                                     </span>
                                     <Link href={`/parca/${product._id}`}>
                                         <button className='h-8 rounded-md bg-primary text-white py-0 px-2'>
-                                            Incele
+                                            İncele
                                         </button>
                                     </Link>
                                 </div>

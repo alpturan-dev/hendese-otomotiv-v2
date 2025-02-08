@@ -36,9 +36,11 @@ const Header = () => {
                         <MenubarMenu>
                             <MenubarTrigger><Menu className='text-primary' /></MenubarTrigger>
                             <MenubarContent>
-                                <MenubarItem>
-                                    Tüm Parçalar
-                                </MenubarItem>
+                                <Link href="/tum-parcalar">
+                                    <MenubarItem>
+                                        Tüm Parçalar
+                                    </MenubarItem>
+                                </Link>
                                 <MenubarSeparator />
                                 {menus.map((menu, index) => (
                                     <Link key={index} href={`/kategori/${menu.href}`}>
@@ -98,9 +100,11 @@ const Header = () => {
                                     </div>
                                 </MenubarTrigger>
                                 <MenubarContent>
-                                    <MenubarItem>
-                                        Tüm Parçalar
-                                    </MenubarItem>
+                                    <Link href="/tum-parcalar">
+                                        <MenubarItem>
+                                            Tüm Parçalar
+                                        </MenubarItem>
+                                    </Link>
                                     <MenubarSeparator />
                                     {menus.map((menu, index) => (
                                         <Link key={index} href={`/kategori/${menu.href}`}>

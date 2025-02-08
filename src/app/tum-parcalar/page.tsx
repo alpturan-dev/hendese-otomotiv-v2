@@ -1,46 +1,35 @@
 import React from 'react'
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { menus } from '@/constants/constants';
-import Link from 'next/link';
+import Line from '@/components/line';
+import Image from 'next/image'
 import { twJoin } from 'tailwind-merge';
-import Image from 'next/image';
+import Link from 'next/link';
 import { Product } from '@/types/types';
 
-type Props = {
-    params: Promise<{ slug: string }>;
-};
-
-export default async function Page({ params }: Props) {
-    const slug = (await params).slug;
-    const menu = menus.filter((el) => slug === el.href.substring(1, el.href.length))[0];
-    const data = await fetch(process.env.API_URL + '/api/products/part/' + menu?.label);
+export default async function AllProducts() {
+    const data = await fetch(process.env.API_URL + '/api/products');
     const products = await data.json();
     return (
-        <div className='max-w-4xl mx-auto px-5 md:px-0 pb-20'>
-            <hr className='block md:hidden' />
-            <Breadcrumb className='pt-4'>
-                <BreadcrumbList className='text-base'>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href="/tum-parcalar">Tüm Parçalar</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>{menu?.label}</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
+        <div className='max-w-4xl mx-auto pt-0 md:pt-4 px-4 md:px-0'>
+            <div className='flex justify-between'>
+                <div className='relative'>
+                    <h4 className='text-xl font-bold'>
+                        Tüm Parçalar
+                    </h4>
+                    <div className='absolute -bottom-1'>
+                        <Line width={110} />
+                    </div>
+                </div>
+                <div>
+                    <span className='text-xs'>
+                        Toplam {products.count} parça{" "}
+                    </span>
+                </div>
+            </div>
             <div className='py-4 grid grid-cols-2 md:grid-cols-5 gap-4'>
-                {products.map((product: Product, index: number) => (
+                {products.data.map((product: Product, index: number) => (
                     <div key={index} className='rounded-xl h-80 border shadow-md py-[10px] px-4'>
                         <div className='h-[120px]'>
-                            <Image src={product.images[0]} alt={product.name} className='h-full' width={120} height={120} />
+                            <Image src={product.images[0]} alt={product.name} className='h-full' width={150} height={120} />
                         </div>
                         <div className='h-[120px] flex flex-col gap-[2px] pt-1'>
                             <span className='text-[10px] font-extralight'>{product.part}</span>
@@ -49,7 +38,7 @@ export default async function Page({ params }: Props) {
                                 Oem: {product.oem}
                             </span>
                         </div>
-                        <div className='h-[60px] flex justify-between items-center'>
+                        <div className='h-[60px] flex justify-between items-center gap-1'>
                             <span className={twJoin(
                                 'font-semibold',
                                 product.price === "FİYAT SORUNUZ" ? 'text-sm' : 'text-xl'
@@ -63,7 +52,8 @@ export default async function Page({ params }: Props) {
                             </Link>
                         </div>
                     </div>
-                ))}
+                ))
+                }
             </div>
         </div>
     )
