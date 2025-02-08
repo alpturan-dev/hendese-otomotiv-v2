@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body
         className={`${oswald.className} antialiased min-h-screen flex flex-col justify-between`}
       >
+        <Analytics />
         <Header />
         <div className="flex-grow">
           {children}
