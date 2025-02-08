@@ -14,6 +14,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { menus } from '@/constants/constants';
+import { Product } from '@/types/types';
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -43,11 +44,19 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     }
 }
 
+function generateRandomNumber(maxNumber: number): number {
+    const randomNumber = Math.floor(Math.random() * (maxNumber - 5));
+    return randomNumber;
+}
+
 export default async function Page({ params }: Props) {
     const slug = (await params).slug;
     const data = await fetch(process.env.API_URL + '/api/products/' + slug);
     const product = await data.json();
     const menu = menus.filter((el) => product.part === el.label)[0];
+    const allData = await fetch(process.env.API_URL + '/api/products');
+    const allProducts = await allData.json();
+    const randomNumber = generateRandomNumber(allProducts.count)
     return (
         <div className='max-w-4xl mx-auto px-5 md:px-0'>
             <hr className='block md:hidden' />
@@ -93,40 +102,66 @@ export default async function Page({ params }: Props) {
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                             {product.description}
                         </p>
-                        <div className="flex flex-col gap-4 sm:gap-5 pt-2">
+                        <div className="flex flex-row md:flex-col gap-1 justify-between items-center md:items-start sm:gap-5 pt-3">
                             {product.stock > 0 &&
                                 <div className="text-3xl font-bold">
                                     {product.price === "FİYAT SORUNUZ" ? "FİYAT SORUNUZ" : product.price + ' ₺'}
                                 </div>
                             }
-                            {/* <div className="flex ">
-                            <a href="tel:+90-530-360-4105" className="text-xl py-4">
-                                <div className='rounded-lg bg-primary py-2 px-4 text-white'>Bizi Arayın +90 530 360 41 05</div>
-                            </a>
-                        </div> */}
+                            <div className="flex">
+                                <a href="tel:+90-530-360-4105" className="text-lg md:text-xl">
+                                    <div className='rounded-lg bg-primary py-1 px-2 text-white text-center md:py-2 md:px-4'>
+                                        Bizi Arayın
+                                        <div>
+                                            +90 530 360 41 05
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className='mt-4 h-[0.5px] bg-[#bfc0c3] w-full'></div>
+            <div className='mt-8 h-[0.5px] bg-black w-full'></div>
             <div className='py-4 flex flex-col gap-4'>
                 <span className='text-base font-light'>
                     Daha fazla yedek parça
                 </span>
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
-                    {Array.from([1, 2, 3, 4]).map((index) => (
-                        <Link key={index} href={`/parca/${product._id}`}>
-                            <div className='rounded-xl h-[240px] border shadow-md py-[10px] px-5'>
-                                <div className='h-[120px]'>
-                                    <Image src={product.images[0]} alt={product.name} className='h-full' width={120} height={120} />
-                                </div>
-                                <div className='h-[120px] flex flex-col gap-1'>
-                                    <span className='text-[10px] font-extralight'>Motor Mekanik</span>
-                                    <span className='h-[75px] overflow-hidden text-base font-semibold'>{product.name}</span>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
+                <div className='grid md:hidden grid-cols-2 gap-3 '>
+                    {allProducts.data.map((product: Product, index: number) => {
+                        if (index >= randomNumber && index < randomNumber + 2)
+                            return (
+                                <Link key={index} href={`/parca/${product._id}`}>
+                                    <div className='rounded-xl h-[240px] border py-[10px] px-4'>
+                                        <div className='h-[120px]'>
+                                            <Image src={product.images[0]} alt={product.name} className='h-full' width={130} height={120} />
+                                        </div>
+                                        <div className='h-[120px] flex flex-col gap-1 pt-1'>
+                                            <span className='text-[10px] font-extralight'>{product.part}</span>
+                                            <span className='h-[75px] overflow-hidden text-base'>{product.name}</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )
+                    })}
+                </div>
+                <div className='hidden md:grid grid-cols-5 gap-3'>
+                    {allProducts.data.map((product: Product, index: number) => {
+                        if (index >= randomNumber && index < randomNumber + 5)
+                            return (
+                                <Link key={index} href={`/parca/${product._id}`}>
+                                    <div className='rounded-xl h-[240px] border py-[10px] px-4'>
+                                        <div className='h-[120px]'>
+                                            <Image src={product.images[0]} alt={product.name} className='h-full' width={130} height={120} />
+                                        </div>
+                                        <div className='h-[120px] flex flex-col gap-1 pt-1'>
+                                            <span className='text-[10px] font-extralight'>{product.part}</span>
+                                            <span className='h-[75px] overflow-hidden text-base'>{product.name}</span>
+                                        </div>
+                                    </div>
+                                </Link>
+                            )
+                    })}
                 </div>
             </div>
         </div>
