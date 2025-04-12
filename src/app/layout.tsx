@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -13,6 +13,9 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: "Hendese Otomotiv | Suzuki Çıkma Yedek Parça",
   description: "Sakarya Arifiye Suzuki Çıkma Yedek Parça",
+  verification: {
+    google: "google3b84b7ec9d87dc30.html",
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +31,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <Header />
-        <div className="flex-grow">
-          {children}
-        </div>
+        <div className="flex-grow">{children}</div>
         <Footer />
       </body>
     </html>
