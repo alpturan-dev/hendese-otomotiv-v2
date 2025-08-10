@@ -7,7 +7,7 @@ import { Product } from "@/types/types";
 
 export default async function AllProducts() {
   const data = await fetch(process.env.API_URL + "/api/products", {
-    next: { revalidate: 60 }, // Cache for 60 seconds, then revalidate
+    next: { revalidate: 60000 },
   });
   const products = await data.json();
   return (
